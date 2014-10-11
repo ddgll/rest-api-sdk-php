@@ -6,39 +6,40 @@ use PayPal\Common\PPModel;
 use PayPal\Rest\ApiContext;
 
 /**
- * Class PaymentHistory
+ * Class Agreements
  *
- * @property \PayPal\Api\Plans billingPlans
+ * @property \PayPal\Api\Agreement agreements
  * @property int                 count
  * @property string              next_id
  */
-class PlansHistory extends PPModel
+class Agreements extends PPModel
 {
     /**
-     * Set Plans
-     * A list of Plans resources
+     * Set Agreements
+     * A list of Agreements resources
      *
-     * @param \PayPal\Api\Plans $billingPlans
+     * @param \PayPal\Api\Agreement $agreements
      *
      * @return $this
      */
-    public function setPlans($billingPlans)
+    public function setAgreements($agreements)
     {
-        $this->billingPlans = $billingPlans;
+        $this->agreements = $agreements;
 
         return $this;
     }
 
     /**
-     * Get Plans
-     * A list of Plans resources
+     * Get Agreements
+     * A list of Agreements resources
      *
-     * @return \PayPal\Api\Plans
+     * @return \PayPal\Api\Agreement
      */
-    public function getPlans()
+    public function getAgreements()
     {
-        return $this->billingPlans;
+        return $this->agreements;
     }
+    
     /**
      * Set Links
      * A list of Links resources
@@ -93,27 +94,23 @@ class PlansHistory extends PPModel
     }
 
     /**
-     * Set Next ID
-     * Identifier of the next element to get the next range of results
+     * Append an item to the list.
      *
-     * @param string $next_id
-     *
-     * @return $this
+     * @return PayPal\Api\Agreement
      */
-    public function setNextId($next_id)
+    public function addAgreement($plan)
     {
-        $this->next_id = $next_id;
-        return $this;
+        return $this->setAgreements(array_merge($this->plans, array($plan)));
     }
 
     /**
-     * Get Next ID
-     * Identifier of the next element to get the next range of results
+     * Remove a plan from the list.
+     * ¨Agreements are compared using === comparision (PHP.net)
      *
-     * @return string
+     * @return PayPal\Api\Agreement
      */
-    public function getNextId()
+    public function removeAgreement($plan)
     {
-        return $this->next_id;
+        return $this->setAgreements(array_diff($this->plans, array($plan)));
     }
 }
