@@ -34,6 +34,30 @@ class AgreementDetails extends PPModel
     {
         return $this->outstanding_balance;
     }
+    /**
+     * Set Last payment Amount
+     * Amount of last payemnt
+     *
+     * @param PayPal\Api\Currency $last_payment_amount
+     *
+     * @return $this
+     */
+    public function setLastPaymentAmount($last_payment_amount)
+    {
+        $this->last_payment_amount = $last_payment_amount;
+        return $this;
+    }
+
+    /**
+     * Get Last payment Amount
+     * Amount of last payemnt
+     *
+     * @return PayPal\Api\Currency
+     */
+    public function getLastPaymentAmount()
+    {
+        return $this->last_payment_amount;
+    }
 
     /**
      * Number of remaining cycles
